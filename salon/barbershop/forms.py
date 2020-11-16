@@ -3,7 +3,7 @@ import datetime
 from dateutil.relativedelta import *
 
 min_date = datetime.date.today()
-max_date = min_date + relativedelta(months=+3)
+max_date = min_date + relativedelta(weeks=+2)
 
 
 class AppointmentForm(forms.Form):

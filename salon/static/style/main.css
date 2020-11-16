@@ -1,7 +1,4 @@
 
-html,body{
-    height: 100%
-}
 .shop-bg {
     display: block;
      filter: blur(4px);
@@ -21,4 +18,10 @@ html,body{
     text-align: center;
     color: white;
     font-weight: bold;
+}
+
+.footer {
+   position: fixed;
+   width: 100%;
+   text-align: center;
 }
