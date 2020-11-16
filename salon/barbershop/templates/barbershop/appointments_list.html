@@ -19,27 +19,34 @@
 </nav>
 {% endblock %}
 {% block content %}
-{% if messages %}
-<div class="row justify-content-center">
-   <div class="col-lg-4 m-2">
-      {% for message in messages %}
-      <div class="alert alert-{{ message.tags }}" role="alert">
-         {{ message }}
-      </div>
-      {% endfor %}
+<main class="flex-fill">
+    <div class="row justify-content-center">
+   <div class="col-lg-10 col-md-12 col-sm-12 m-2">
+       <h3 class="text-center text-primary p-5">Appointments</h3>
+   <table class="table table-borderless">
+  <thead>
+    <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Time</th>
+        <th scope="col">Date</th>
+        <th scope="col">Service</th>
+    </tr>
+  </thead>
+       {% for appointment in appointments %}
+  <tbody>
+    <tr>
+        <td>{{appointment}}</td>
+        <td>{{appointment.email}}</td>
+        <td>{{appointment.preferred_time}}</td><td>{{appointment.preferred_date}}</td>
+        <td>{{appointment.service}}</td>
+    </tr>
+  </tbody>
+       {% endfor %}
+</table>
    </div>
 </div>
-{% endif %}
-<div class="row justify-content-center">
-   <div class="col-lg-4 col-md-6 col-sm-6 m-2">
-      <h4 class="text-center m-5">Make an Appointment</h4>
-      <form method="POST" name="appointment_form">
-         {% csrf_token %}
-         {{form|crispy}}
-         <button id="submit" name="submit" class="btn btn-primary">Make An Appointment</button>
-      </form>
-   </div>
-</div>
+</main>
 
 {% endblock %}
 
