@@ -1,9 +1,22 @@
 from django import forms
+import datetime
+from dateutil.relativedelta import *
+
+min_date = datetime.date.today()
+max_date = min_date + relativedelta(months=+3)
 
 
 class AppointmentForm(forms.Form):
     name = forms.CharField(label="Name")
     email = forms.EmailField(label="E-mail")
+    preferred_date = forms.DateTimeField(
+        widget=forms.DateTimeInput(attrs={
+            'class': 'form-control datetimepicker-input',
+            'type': 'date',
+            'max': max_date,
+            'min': min_date,
+        })
+    )
     preferred_time = forms.ChoiceField(
         choices=[('10:00-12:00 PM', "10:00 -12:00 PM"), ('12:00 - 14:00 PM', "12:00 - 14:00 PM"),
                  ('14:00 - 16:00 PM', "14:00 - 16:00 PM"), ('16:00 - 18:00 PM', "16:00 - 18:00 PM"),
