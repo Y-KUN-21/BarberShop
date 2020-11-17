@@ -11,9 +11,11 @@
    </button>
    <div class="navbar-collapse collapse" id="collapsingNavbar">
       <ul class="navbar-nav ml-auto">
+         {% if request.user.is_authenticated %}
           <li class="nav-item">
             <a class="nav-link" href="{% url  'appointments_list' %}">Appointment List</a>
          </li>
+         {% endif %}
          <li class="nav-item active">
             <a class="nav-link" href="#service">Service</a>
          </li>
@@ -21,7 +23,7 @@
             <a class="nav-link" href="#pricing">Pricing</a>
          </li>
          <li class="nav-item">
-            <a class="nav-link" href="{% url  'appointment' %}">Appointment</a>
+            <a class="nav-link text-primary" href="{% url  'appointment' %}">Appointment</a>
          </li>
          <li class="nav-item">
             <a class="nav-link" href="https://www.google.com/maps/place/Khar+Danda,+Mumbai,+Maharashtra+400047/@19.0763219,72.8278169,21z/data=!4m5!3m4!1s0x3be7c975108af3cb:0xe4e0566886b38695!8m2!3d19.0787581!4d72.8264378" target="_blank">Find us</a>

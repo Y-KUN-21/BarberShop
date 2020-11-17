@@ -1,52 +1,86 @@
-{% extends "barbershop/main.html" %}
-{% load static %}
-{% load crispy_forms_tags %}
-{% block title%} Make an Appointment {% endblock %}
-{% block navbar %}
-<nav class="navbar navbar-expand-md navbar-light bg-white">
-   <a class="navbar-brand" href="#">
-   <img src="https://www.flaticon.com/svg/static/icons/svg/1995/1995573.svg" width="30" height="30" class="d-inline-block align-top" alt=""><strong>  St Francis Barbershop </strong> </a>
-   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
-   <span class="navbar-toggler-icon"></span>
-   </button>
-   <div class="navbar-collapse collapse" id="collapsingNavbar">
-      <ul class="navbar-nav ml-auto">
-         <li class="nav-item active">
-            <a class="nav-link" href="{% url 'home' %}">Home</a>
-         </li>
-      </ul>
-   </div>
-</nav>
-{% endblock %}
-{% block content %}
-<main class="flex-fill">
+{% extends "barbershop/main.html" %} {% load static %} {% load crispy_forms_tags %} {% block title%} Make an Appointment {% endblock %} {% block navbar %} <nav class="navbar navbar-expand-md navbar-light bg-white">
+    <a class="navbar-brand" href="#">
+        <img src="https://www.flaticon.com/svg/static/icons/svg/1995/1995573.svg" width="30" height="30" class="d-inline-block align-top" alt=""><strong> St Francis Barbershop </strong> </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="collapsingNavbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'home' %}">Home</a>
+            </li>
+        </ul>
+    </div>
+</nav> {% endblock %} {% block content %} <main class="flex-fill">
     <div class="row justify-content-center">
-   <div class="col-lg-10 col-md-12 col-sm-12 m-2">
-       <h3 class="text-center text-primary p-5">Appointments</h3>
-   <table class="table table-borderless">
-  <thead>
-    <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Time</th>
-        <th scope="col">Date</th>
-        <th scope="col">Service</th>
-    </tr>
-  </thead>
-       {% for appointment in appointments %}
-  <tbody>
-    <tr>
-        <td>{{appointment}}</td>
-        <td>{{appointment.email}}</td>
-        <td>{{appointment.preferred_time}}</td><td>{{appointment.preferred_date}}</td>
-        <td>{{appointment.service}}</td>
-    </tr>
-  </tbody>
-       {% endfor %}
-</table>
-   </div>
-</div>
-</main>
-
-{% endblock %}
-
+        <div class="col-lg-10 col-md-12 col-sm-12 m-2">
+            <h3 class="text-center text-primary mt-3">Appointments</h3>
+            <!--            TODAY'S LIST START-->
+            <h4 class="text-warning mt-3 p-2">Today</h4>
+            <table class="table table-bordered ">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Service</th>
+                    </tr>
+                </thead> {% for appointment in today_appointments %} <tbody>
+                    <tr>
+                        <td>{{appointment}}</td>
+                        <td>{{appointment.email}}</td>
+                        <td>{{appointment.preferred_time}}</td>
+                        <td>{{appointment.preferred_date}}</td>
+                        <td>{{appointment.service}}</td>
+                    </tr>
+                </tbody> {% endfor %}
+            </table>
+            <!--            TODAY'S LIST END-->
+            <!--            THIS WEEK'S LIST START-->
+            <h4 class="text-info mt-5 p-2">This week</h4>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Service</th>
+                    </tr>
+                </thead> {% for appointment in week_appointments %} <tbody>
+                    <tr>
+                        <td>{{appointment}}</td>
+                        <td>{{appointment.email}}</td>
+                        <td>{{appointment.preferred_time}}</td>
+                        <td>{{appointment.preferred_date}}</td>
+                        <td>{{appointment.service}}</td>
+                    </tr>
+                </tbody> {% endfor %}
+            </table>
+            <!--            THIS WEEK'S LIST END-->
+            <!--            THIS MONTH'S LIST START-->
+            <h4 class="text-danger mt-5 p-2">This month</h4>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Service</th>
+                    </tr>
+                </thead> {% for appointment in month_appointments %} <tbody>
+                    <tr>
+                        <td>{{appointment}}</td>
+                        <td>{{appointment.email}}</td>
+                        <td>{{appointment.preferred_time}}</td>
+                        <td>{{appointment.preferred_date}}</td>
+                        <td>{{appointment.service}}</td>
+                    </tr>
+                </tbody> {% endfor %}
+            </table>
+            <!--            THIS MONTH'S LIST END-->
+        </div>
+    </div>
+</main> {% endblock %}
