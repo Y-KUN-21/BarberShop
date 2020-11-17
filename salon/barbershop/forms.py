@@ -18,11 +18,12 @@ class AppointmentForm(forms.Form):
         })
     )
     preferred_time = forms.ChoiceField(
-        choices=[('10:00 - 12:00 PM', "10:00 - 12:00 PM"), ('12:00 - 14:00 PM', "12:00 - 14:00 PM"),
-                 ('14:00 - 16:00 PM', "14:00 - 16:00 PM"), ('16:00 - 18:00 PM', "16:00 - 18:00 PM"),
-                 ('18:00 - 20:00 PM', "18:00 - 20:00 PM"), ('20:00 - 22:00 PM', "20:00 - 22:00 PM"), ],
+        choices=[('07:30 - 10:00 AM', "07:30 - 10:00 AM"), ('10:00 - 12:00 PM', "10:00 - 12:00 PM"),
+                 ('12:00 - 14:00 PM', "12:00 - 14:00 PM"), ('14:00 - 16:00 PM', "14:00 - 16:00 PM"),
+                 ('16:00 - 18:00 PM', "16:00 - 18:00 PM"), ('18:00 - 20:00 PM', "18:00 - 20:00 PM"),
+                 ('20:00 - 22:30 PM', "20:00 - 22:30 PM"), ],
         label="Preferred time")
     service = forms.ChoiceField(choices=[('Haircut', "Haircut"), ('Shaving', "Shaving"),
-                                         ('Color', "Color"), ('Face Massage', "Face Massage( 15 mins )"),
+                                         ('Color', "Color"), ('Face Massage', "Face Massage"),
                                          ('Face Scrub', "Face Scrub"), ('Facial', "Facial"), ('Clean up', "Clean up"),
                                          ("Head Massage", "Head Massage")], label="Appointment for")
